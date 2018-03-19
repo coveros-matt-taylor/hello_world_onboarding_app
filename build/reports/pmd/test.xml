@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="5.1.1" timestamp="2018-03-19T14:58:36.654">
+<file name="C:\Users\Matthew Taylor\eclipse-workspace\hello_world\src\test\java\com\coveros\hello_world_tests\EvenNumberGeneratorTest.java">
+<violation beginline="7" endline="15" begincolumn="8" endcolumn="1" rule="CommentRequired" ruleset="Comments" package="com.coveros.hello_world_tests" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.1/rules/java/comments.html#CommentRequired" priority="3">
+headerCommentRequirement Required
+</violation>
+<violation beginline="9" endline="14" begincolumn="9" endcolumn="2" rule="CommentRequired" ruleset="Comments" package="com.coveros.hello_world_tests" class="EvenNumberGeneratorTest" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.1/rules/java/comments.html#CommentRequired" priority="3">
+publicMethodCommentRequirement Required
+</violation>
+</file>
+</pmd>

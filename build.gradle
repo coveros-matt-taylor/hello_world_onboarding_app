@@ -28,88 +28,95 @@ jacoco {
     toolVersion = "0.7.4+"
 }
 
+
 apply plugin: 'pmd'
-apply plugin: 'findbugs'
+apply plugin: "findbugs"
 apply plugin: 'checkstyle'
-apply plugin: 'sonar-runner'
+apply plugin: "sonar-runner"
 
 jacocoTestReport {
-	reports {
-		xml.enabled true
-		csv.enabled false
-	}
+    reports {
+        xml.enabled true
+        csv.enabled false
+    }
 }
 
 //testing git push hook 2
 
-//JDK version source compatibility
+// JDK version source compatibility
 sourceCompatibility = 1.8
-//project version
+// project version
 version = '1.0.2'
-//war file name
+// War file name
 war.baseName = 'hello-world'
-//web directory, this overrides the default value 'webapp'
-//project.webAppDirName = 'WebContent'
+// Web directory, this overrides the default value "webapp"
+// project.webAppDirName = 'WebContent'
 
-//set source directory
+// Set source directory
 /*sourceSets {
-	main {
-		java {
-			srcDir 'src'
-		}
-	}
-} */
+        main {
+            java {
+                srcDir 'src'
+            }
+        }
+    }*/
 
 task app1Rpm(type: Rpm) {
-	packageName 'hello-world'
-	version '1.0.2'
-	arch NOARCH
-	os LINUX
-	into ('/usr/share/tomcat/webapps/') {
-		addParentDirs = false
-		from (war.outputs.files) {
-			addParentDirs = false
-		}
-	}
+    packageName 'hello-world'
+    version '1.0.2'
+    arch NOARCH
+    os LINUX
+    into ('/usr/share/tomcat/webapps/') {
+//      into ('/var/lib/tomcat/webapps') {
+        addParentDirs = false
+//    from (war.outputs.files) {
+//           addParentDirs = false
+//        }
+    }
 }
 
-//upload archives stuff use this or maven stuff
+//UPLOAD ARCHIVES STUFF USE THIS OR MAVEN STUFF
 artifacts {
-	archives app1Rpm
+    archives app1Rpm
 }
 //new comment
 uploadArchives {
-	repositories {
-		maven {
-			credentials {
-				username 'admin'
-				password 'admin'
-			}
-		//change pto point to your repo
-		url "http://ec2-54-210-118-101.compute-1.amazonaws.com:8081/nexus/content/repositories/snapshots"
-		}
-	}
+    repositories {
+        maven {
+          credentials {
+                username "admin"
+                password "admin123"
+            }
+          
+            // change to point to your repo, e.g. http://my.org/repo
+            url "http://ec2-54-210-118-101.compute-1.amazonaws.com:8081/nexus/content/repositories/snapshots"
+      }
+    }
 }
 
 pmd {
-	ignoreFailures = true
-	reportDir = file("$project.buildDir/reports/pmd")
-	ruleSets = [
-		"java-basic",
-		"java-braces",
-		"java-comments"
-	]
+  ignoreFailures = true
+  //sourceSets = ['src/main', 'src/test']
+  reportsDir = file("$project.buildDir/reports/pmd")
+  ruleSets = [
+    "java-basic", 
+    "java-braces",
+    "java-comments"
+  ]
 }
 
 sonarRunner {
-	sonarProperties {
-		property "sonar.host.url",  "http://172.31.2.109:9000"
-		property "sonar.username", "admin"
-		property "sonar.password", "admin"
-		property "sonar.jdbc.url", "jdbc:mysql://172.31.2.109:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance"
-		property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver"
-		property "sonar.jdbc.username", "sonarqube"
-		property "sonar.jdbc.password", "coveros1"
-		property "sonar.java.source", "1.8"
-	}
+    sonarProperties {
+        property "sonar.host.url", "http://172.31.2.109:9000"
+        property "sonar.username", "admin"
+        property "sonar.password", "admin"
+        property "sonar.jdbc.url", "jdbc:mysql://172.31.2.109:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance"
+        property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver"
+        property "sonar.jdbc.username", "sonarqube"
+        property "sonar.jdbc.password", "coveros1"
+        property "sonar.java.source", "1.8"
+    }
 }
+
+//jenkins + tomcat IP: http://172.31.2.196
+//sonar IP: http://172.31.2.109
