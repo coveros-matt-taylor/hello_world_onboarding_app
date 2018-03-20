@@ -32,7 +32,7 @@ jacoco {
 apply plugin: 'pmd'
 apply plugin: "findbugs"
 apply plugin: 'checkstyle'
-apply plugin: "sonar-runner"
+apply plugin: "sonarqube"
 
 jacocoTestReport {
     reports {
@@ -106,8 +106,8 @@ pmd {
   ]
 }
 
-sonarScanner {
-    sonarProperties {
+sonarqube {
+    poperties {
         property "sonar.host.url", "http://172.31.2.109:9000"
         property "sonar.username", "admin"
         property "sonar.password", "admin"
