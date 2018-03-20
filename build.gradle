@@ -97,8 +97,8 @@ uploadArchives {
             // change to point to your repo, e.g. http://my.org/repo
             //url "http://ec2-54-210-118-101.compute-1.amazonaws.com:8081/nexus/content/repositories/snapshots"
             //url "http://172.31.2.109:8081/nexus"
-            // need to remove trailing '/'s manually or they double up, ideally fix this on end of whatever is appended
-            // to url
+            // need to remove trailing '/'s manually or they double up, ideally fix this on end of
+            // whatever is appended to url
             url "http://172.31.2.109:8081/nexus/content/repositories/snapshots"
       }
     }
