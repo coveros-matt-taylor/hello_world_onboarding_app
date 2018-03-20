@@ -12,9 +12,10 @@ public class EvenNumberGeneratorTest {
 	
 	  assertEquals(0, randomResult % 2);
  	}
+ @Test
  	public void testRandomOddNumberGenerator() {
 		
-		int randomResult = EvenNumberGenerator.generateRandomOdd();
-		assertEquals(1, randomResult % 2);
+		int randomResult2 = EvenNumberGenerator.generateRandomOdd();
+		assertEquals(1, randomResult2 % 2);
 	}
 }
