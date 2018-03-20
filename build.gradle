@@ -115,6 +115,9 @@ sonarRunner {
         property "sonar.jdbc.username", "sonarqube"
         property "sonar.jdbc.password", "coveros1"
         property "sonar.java.source", "1.8"
+        //two below are new for 4.0+ compatibility
+        property "sonar.java.binaries=**/classes"
+		property "sonar.java.libraries=**/*.jar"
     }
 }
 
