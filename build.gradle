@@ -1,3 +1,7 @@
+plugins {
+	id "org.sonarqube" versions "2.6.1"
+}
+
 buildscript {
     repositories {
     	jcenter()
@@ -33,9 +37,7 @@ apply plugin: 'pmd'
 apply plugin: "findbugs"
 apply plugin: 'checkstyle'
 //apply plugin: "sonarqube"
-plugins {
-	id "org.sonarqube" versions "2.6.1"
-}
+
 
 jacocoTestReport {
     reports {
